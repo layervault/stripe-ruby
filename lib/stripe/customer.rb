@@ -37,6 +37,10 @@ module Stripe
       Stripe.request(:delete, discount_url, @api_key)
       refresh_from({ :discount => nil }, api_key, true)
     end
+    
+    def create_invoice
+      Invoice.create({ :customer => id }, @api_key)
+    end
 
     private
 
