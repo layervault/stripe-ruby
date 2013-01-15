@@ -8,6 +8,11 @@ module Stripe
       response, api_key = Stripe.request(:get, upcoming_url, @api_key, params)
       Util.convert_to_stripe_object(response, api_key)
     end
+    
+    def self.create(params)
+      response, api_key = Stripe.request(:post, invoices_url, @api_key, params)
+      Util.convert_to_stripe_object(response, api_key)
+    end
 
     def pay
       response, api_key = Stripe.request(:post, pay_url, @api_key)
